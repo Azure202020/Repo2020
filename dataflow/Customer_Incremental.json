@@ -1,0 +1,39 @@
+{
+	"name": "Customer_Incremental",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "Customer",
+						"type": "DatasetReference"
+					},
+					"name": "source1"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "ls_DataLake_json",
+						"type": "DatasetReference"
+					},
+					"name": "sink1"
+				},
+				{
+					"dataset": {
+						"referenceName": "Customer",
+						"type": "DatasetReference"
+					},
+					"name": "sink2"
+				}
+			],
+			"transformations": [
+				{
+					"name": "AlterRow1"
+				}
+			],
+			"script": "source(output(\n\t\tCustomerID as integer,\n\t\tPersonID as integer,\n\t\tStoreID as integer,\n\t\tTerritoryID as integer,\n\t\tAccountNumber as string,\n\t\trowguid as string,\n\t\tModifiedDate as timestamp,\n\t\tRead_Flag as string,\n\t\tLast_Modified_Date as timestamp\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tisolationLevel: 'READ_UNCOMMITTED',\n\tquery: 'SELECT TOP (100) [CustomerID]\\n      ,[PersonID]\\n      ,[StoreID]\\n      ,[TerritoryID]\\n      ,[AccountNumber]\\n      ,[rowguid]\\n      ,[ModifiedDate]\\n      ,\\'1\\' as [Read_Flag]  \\n      ,getdate() as [Last_Modified_Date]\\n  FROM [Sales].[Customer]where Read_Flag=\\'0\\' order by CustomerID',\n\tformat: 'query') ~> source1\nsource1 alterRow(updateIf(Read_Flag=='1')) ~> AlterRow1\nsource1 sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tpartitionFileNames:['Customer100'],\n\tpartitionBy('hash', 1),\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> sink1\nAlterRow1 sink(input(\n\t\tCustomerID as integer,\n\t\tPersonID as integer,\n\t\tStoreID as integer,\n\t\tTerritoryID as integer,\n\t\tAccountNumber as string,\n\t\trowguid as string,\n\t\tModifiedDate as timestamp,\n\t\tRead_Flag as boolean,\n\t\tLast_Modified_Date as timestamp\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tdeletable:false,\n\tinsertable:true,\n\tupdateable:true,\n\tupsertable:false,\n\tkeys:['CustomerID'],\n\tskipKeyWrites:true,\n\tformat: 'table',\n\tmapColumn(\n\t\tRead_Flag,\n\t\tLast_Modified_Date,\n\t\tCustomerID\n\t),\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> sink2"
+		}
+	}
+}

@@ -1,0 +1,81 @@
+{
+	"name": "Address_Staging",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_AdventureWorks_Staging",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "Staging"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "AddressID",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "AddressLine1",
+				"type": "nvarchar"
+			},
+			{
+				"name": "AddressLine2",
+				"type": "nvarchar"
+			},
+			{
+				"name": "City",
+				"type": "nvarchar"
+			},
+			{
+				"name": "StateProvinceID",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "PostalCode",
+				"type": "nvarchar"
+			},
+			{
+				"name": "SpatialLocation",
+				"type": "AdventureWorks_Staging.sys.geography"
+			},
+			{
+				"name": "rowguid",
+				"type": "uniqueidentifier"
+			},
+			{
+				"name": "ModifiedDate",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "Last_Modified_Date",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "Read_Flag",
+				"type": "bit"
+			},
+			{
+				"name": "InsterDate",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "DWHash",
+				"type": "varchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "Address"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

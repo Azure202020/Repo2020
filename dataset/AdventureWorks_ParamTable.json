@@ -1,0 +1,40 @@
+{
+	"name": "AdventureWorks_ParamTable",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_AdventureWorks_Azure",
+			"type": "LinkedServiceReference",
+			"parameters": {
+				"serverName": "databaseserver-01.database.windows.net",
+				"dbName": "AdventureWorks2016CTP3",
+				"userName": "ssazureproject1",
+				"password": "drai429M"
+			}
+		},
+		"parameters": {
+			"schemaName": {
+				"type": "String"
+			},
+			"tableName": {
+				"type": "String"
+			}
+		},
+		"folder": {
+			"name": "Misc"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": {
+				"value": "@dataset().schemaName",
+				"type": "Expression"
+			},
+			"table": {
+				"value": "@dataset().tableName",
+				"type": "Expression"
+			}
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

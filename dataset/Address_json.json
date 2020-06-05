@@ -1,0 +1,59 @@
+{
+	"name": "Address_json",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "BLOB_Storage",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "BLOB"
+		},
+		"annotations": [],
+		"type": "Json",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"container": "datalake"
+			}
+		},
+		"schema": {
+			"type": "object",
+			"properties": {
+				"added": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
+				},
+				"removed": {
+					"type": "array"
+				},
+				"CustomerID": {
+					"type": "integer"
+				},
+				"StoreID": {
+					"type": "integer"
+				},
+				"TerritoryID": {
+					"type": "integer"
+				},
+				"AccountNumber": {
+					"type": "string"
+				},
+				"rowguid": {
+					"type": "string"
+				},
+				"ModifiedDate": {
+					"type": "string"
+				},
+				"Read_Flag": {
+					"type": "string"
+				},
+				"Last_Modified_Date": {
+					"type": "string"
+				}
+			}
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

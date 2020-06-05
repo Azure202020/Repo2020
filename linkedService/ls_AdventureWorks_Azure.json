@@ -1,0 +1,29 @@
+{
+	"name": "ls_AdventureWorks_Azure",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"parameters": {
+			"serverName": {
+				"type": "String",
+				"defaultValue": "databaseserver-01.database.windows.net"
+			},
+			"dbName": {
+				"type": "string",
+				"defaultValue": "AdventureWorks2016CTP3"
+			},
+			"userName": {
+				"type": "string",
+				"defaultValue": "ssazureproject1"
+			},
+			"password": {
+				"type": "string",
+				"defaultValue": "drai429M"
+			}
+		},
+		"annotations": [],
+		"type": "AzureSqlDatabase",
+		"typeProperties": {
+			"connectionString": "Integrated Security=False;Encrypt=True;Connection Timeout=30;Data Source=@{linkedService().serverName};Initial Catalog=@{linkedService().dbName};User ID=@{linkedService().userName};Password=@{linkedService().password}"
+		}
+	}
+}

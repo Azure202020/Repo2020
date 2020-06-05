@@ -1,0 +1,51 @@
+{
+	"name": "Currency_Staging",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_AdventureWorks_Staging",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "Staging"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "CurrencyCode",
+				"type": "nchar"
+			},
+			{
+				"name": "Name",
+				"type": "nchar"
+			},
+			{
+				"name": "ModifiedDate",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "InsterDate",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "Last_Modified_Date",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "DWHash",
+				"type": "varchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "Currency"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

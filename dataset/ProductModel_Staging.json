@@ -1,0 +1,68 @@
+{
+	"name": "ProductModel_Staging",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_AdventureWorks_Staging",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "Staging"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "ProductModelID",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Name",
+				"type": "nchar"
+			},
+			{
+				"name": "CatalogDescription",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Instructions",
+				"type": "nvarchar"
+			},
+			{
+				"name": "rowguid",
+				"type": "uniqueidentifier"
+			},
+			{
+				"name": "ModifiedDate",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "Last_Modified_Date",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "Read_Flag",
+				"type": "bit"
+			},
+			{
+				"name": "InsterDate",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "DWHash",
+				"type": "varchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "ProductModel"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

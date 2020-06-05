@@ -1,0 +1,113 @@
+{
+	"name": "Customer",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_AdventureWorks_Azure",
+			"type": "LinkedServiceReference",
+			"parameters": {
+				"serverName": {
+					"value": "@dataset().serverName",
+					"type": "Expression"
+				},
+				"dbName": {
+					"value": "@dataset().dbName",
+					"type": "Expression"
+				},
+				"userName": {
+					"value": "@dataset().userName",
+					"type": "Expression"
+				},
+				"password": {
+					"value": "@dataset().password",
+					"type": "Expression"
+				}
+			}
+		},
+		"parameters": {
+			"serverName": {
+				"type": "String",
+				"defaultValue": "databaseserver-01.database.windows.net"
+			},
+			"dbName": {
+				"type": "string",
+				"defaultValue": "AdventureWorks2016CTP3"
+			},
+			"userName": {
+				"type": "String",
+				"defaultValue": "ssazureproject1"
+			},
+			"password": {
+				"type": "string",
+				"defaultValue": "drai429M"
+			},
+			"tableName": {
+				"type": "String"
+			},
+			"schemaName": {
+				"type": "String"
+			}
+		},
+		"folder": {
+			"name": "OLTP"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "CustomerID",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "PersonID",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "StoreID",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "TerritoryID",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "AccountNumber",
+				"type": "varchar"
+			},
+			{
+				"name": "rowguid",
+				"type": "uniqueidentifier"
+			},
+			{
+				"name": "ModifiedDate",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "Read_Flag",
+				"type": "bit"
+			},
+			{
+				"name": "Last_Modified_Date",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			}
+		],
+		"typeProperties": {
+			"schema": {
+				"value": "Sales",
+				"type": "Expression"
+			},
+			"table": {
+				"value": "Customer",
+				"type": "Expression"
+			}
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

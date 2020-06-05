@@ -1,0 +1,1022 @@
+{
+	"name": "ppl_LoadStaging",
+	"properties": {
+		"activities": [
+			{
+				"name": "Copy_Customer_Staging",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "JsonSource",
+						"storeSettings": {
+							"type": "AzureBlobStorageReadSettings",
+							"recursive": true
+						},
+						"formatSettings": {
+							"type": "JsonReadSettings"
+						}
+					},
+					"sink": {
+						"type": "AzureSqlSink"
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"path": "$['CustomerID']"
+								},
+								"sink": {
+									"name": "CustomerID",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"path": "$['PersonID']"
+								},
+								"sink": {
+									"name": "PersonID",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"path": "$['StoreID']"
+								},
+								"sink": {
+									"name": "StoreID",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"path": "$['TerritoryID']"
+								},
+								"sink": {
+									"name": "TerritoryID",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"path": "$['AccountNumber']"
+								},
+								"sink": {
+									"name": "AccountNumber",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['rowguid']"
+								},
+								"sink": {
+									"name": "rowguid",
+									"type": "Guid"
+								}
+							},
+							{
+								"source": {
+									"path": "$['ModifiedDate']"
+								},
+								"sink": {
+									"name": "ModifiedDate",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"path": "$['Read_Flag']"
+								},
+								"sink": {
+									"name": "Read_Flag",
+									"type": "Boolean"
+								}
+							},
+							{
+								"source": {
+									"path": "$['Last_Modified_Date']"
+								},
+								"sink": {
+									"name": "Last_Modified_Date",
+									"type": "DateTime"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "Customer_All",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "Customer_Staging",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "Copy_Product",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "Copy_Customer_Staging",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "JsonSource",
+						"storeSettings": {
+							"type": "AzureBlobStorageReadSettings",
+							"recursive": true
+						},
+						"formatSettings": {
+							"type": "JsonReadSettings"
+						}
+					},
+					"sink": {
+						"type": "AzureSqlSink"
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"path": "$['ProductID']"
+								},
+								"sink": {
+									"name": "ProductID",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"path": "$['Name']"
+								},
+								"sink": {
+									"name": "Name",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['ProductNumber']"
+								},
+								"sink": {
+									"name": "ProductNumber",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['MakeFlag']"
+								},
+								"sink": {
+									"name": "MakeFlag",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['FinishedGoodsFlag']"
+								},
+								"sink": {
+									"name": "FinishedGoodsFlag",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['Color']"
+								},
+								"sink": {
+									"name": "Color",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['SafetyStockLevel']"
+								},
+								"sink": {
+									"name": "SafetyStockLevel",
+									"type": "Int16"
+								}
+							},
+							{
+								"source": {
+									"path": "$['ReorderPoint']"
+								},
+								"sink": {
+									"name": "ReorderPoint",
+									"type": "Int16"
+								}
+							},
+							{
+								"source": {
+									"path": "$['StandardCost']"
+								},
+								"sink": {
+									"name": "StandardCost",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"path": "$['ListPrice']"
+								},
+								"sink": {
+									"name": "ListPrice",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"path": "$['Size']"
+								},
+								"sink": {
+									"name": "Size",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['SizeUnitMeasureCode']"
+								},
+								"sink": {
+									"name": "SizeUnitMeasureCode",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['WeightUnitMeasureCode']"
+								},
+								"sink": {
+									"name": "WeightUnitMeasureCode",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['Weight']"
+								},
+								"sink": {
+									"name": "Weight",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"path": "$['DaysToManufacture']"
+								},
+								"sink": {
+									"name": "DaysToManufacture",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"path": "$['ProductLine']"
+								},
+								"sink": {
+									"name": "ProductLine",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['Class']"
+								},
+								"sink": {
+									"name": "Class",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['Style']"
+								},
+								"sink": {
+									"name": "Style",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['ProductSubcategoryID']"
+								},
+								"sink": {
+									"name": "ProductSubcategoryID",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"path": "$['ProductModelID']"
+								},
+								"sink": {
+									"name": "ProductModelID",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"path": "$['SellStartDate']"
+								},
+								"sink": {
+									"name": "SellStartDate",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"path": "$['SellEndDate']"
+								},
+								"sink": {
+									"name": "SellEndDate",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"path": "$['DiscontinuedDate']"
+								},
+								"sink": {
+									"name": "DiscontinuedDate",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"path": "$['rowguid']"
+								},
+								"sink": {
+									"name": "rowguid",
+									"type": "Guid"
+								}
+							},
+							{
+								"source": {
+									"path": "$['ModifiedDate']"
+								},
+								"sink": {
+									"name": "ModifiedDate",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"path": "$['Read_Flag']"
+								},
+								"sink": {
+									"name": "Read_Flag",
+									"type": "Boolean"
+								}
+							},
+							{
+								"source": {
+									"path": "$['Last_Modified_Date']"
+								},
+								"sink": {
+									"name": "Last_Modified_Date",
+									"type": "DateTime"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "Product_json",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "Product_Staging",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "Copy_ProductCategory",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "Copy_Product",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "JsonSource",
+						"storeSettings": {
+							"type": "AzureBlobStorageReadSettings",
+							"recursive": true
+						},
+						"formatSettings": {
+							"type": "JsonReadSettings"
+						}
+					},
+					"sink": {
+						"type": "AzureSqlSink"
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"path": "$['ProductCategoryID']"
+								},
+								"sink": {
+									"name": "ProductCategoryID",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"path": "$['Name']"
+								},
+								"sink": {
+									"name": "Name",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['rowguid']"
+								},
+								"sink": {
+									"name": "rowguid",
+									"type": "Guid"
+								}
+							},
+							{
+								"source": {
+									"path": "$['ModifiedDate']"
+								},
+								"sink": {
+									"name": "ModifiedDate",
+									"type": "DateTime"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "ProductCategory_Json",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "ProductCategory_Staging",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "Copy_ProductModel",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "Copy_ProductCategory",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "JsonSource",
+						"storeSettings": {
+							"type": "AzureBlobStorageReadSettings",
+							"recursive": true
+						},
+						"formatSettings": {
+							"type": "JsonReadSettings"
+						}
+					},
+					"sink": {
+						"type": "AzureSqlSink"
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"path": "$['ProductModelID']"
+								},
+								"sink": {
+									"name": "ProductModelID",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"path": "$['Name']"
+								},
+								"sink": {
+									"name": "Name",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['rowguid']"
+								},
+								"sink": {
+									"name": "rowguid",
+									"type": "Guid"
+								}
+							},
+							{
+								"source": {
+									"path": "$['ModifiedDate']"
+								},
+								"sink": {
+									"name": "ModifiedDate",
+									"type": "DateTime"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "ProductModel_json",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "ProductModel_Staging",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "Copy_Currency",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "Copy_ProductModel",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"queryTimeout": "02:00:00"
+					},
+					"sink": {
+						"type": "AzureSqlSink"
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "CurrencyCode",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CurrencyCode",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Name",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Name",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ModifiedDate",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "ModifiedDate",
+									"type": "DateTime"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "Currency",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "Currency_Staging",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "Copy_SalesHeader",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "Copy_Currency",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "JsonSource",
+						"storeSettings": {
+							"type": "AzureBlobStorageReadSettings",
+							"recursive": true
+						},
+						"formatSettings": {
+							"type": "JsonReadSettings"
+						}
+					},
+					"sink": {
+						"type": "AzureSqlSink"
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"path": "$['SalesOrderID']"
+								},
+								"sink": {
+									"name": "SalesOrderID",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"path": "$['RevisionNumber']"
+								},
+								"sink": {
+									"name": "RevisionNumber",
+									"type": "Byte"
+								}
+							},
+							{
+								"source": {
+									"path": "$['OrderDate']"
+								},
+								"sink": {
+									"name": "OrderDate",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"path": "$['DueDate']"
+								},
+								"sink": {
+									"name": "DueDate",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"path": "$['ShipDate']"
+								},
+								"sink": {
+									"name": "ShipDate",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"path": "$['Status']"
+								},
+								"sink": {
+									"name": "Status",
+									"type": "Byte"
+								}
+							},
+							{
+								"source": {
+									"path": "$['OnlineOrderFlag']"
+								},
+								"sink": {
+									"name": "OnlineOrderFlag",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['SalesOrderNumber']"
+								},
+								"sink": {
+									"name": "SalesOrderNumber",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['PurchaseOrderNumber']"
+								},
+								"sink": {
+									"name": "PurchaseOrderNumber",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['AccountNumber']"
+								},
+								"sink": {
+									"name": "AccountNumber",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['CustomerID']"
+								},
+								"sink": {
+									"name": "CustomerID",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"path": "$['SalesPersonID']"
+								},
+								"sink": {
+									"name": "SalesPersonID",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"path": "$['TerritoryID']"
+								},
+								"sink": {
+									"name": "TerritoryID",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"path": "$['BillToAddressID']"
+								},
+								"sink": {
+									"name": "BillToAddressID",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"path": "$['ShipToAddressID']"
+								},
+								"sink": {
+									"name": "ShipToAddressID",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"path": "$['ShipMethodID']"
+								},
+								"sink": {
+									"name": "ShipMethodID",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"path": "$['CreditCardID']"
+								},
+								"sink": {
+									"name": "CreditCardID",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"path": "$['CreditCardApprovalCode']"
+								},
+								"sink": {
+									"name": "CreditCardApprovalCode",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['SubTotal']"
+								},
+								"sink": {
+									"name": "SubTotal",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"path": "$['TaxAmt']"
+								},
+								"sink": {
+									"name": "TaxAmt",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"path": "$['Freight']"
+								},
+								"sink": {
+									"name": "Freight",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"path": "$['TotalDue']"
+								},
+								"sink": {
+									"name": "TotalDue",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"path": "$['rowguid']"
+								},
+								"sink": {
+									"name": "rowguid",
+									"type": "Guid"
+								}
+							},
+							{
+								"source": {
+									"path": "$['Read_Flag']"
+								},
+								"sink": {
+									"name": "Read_Flag",
+									"type": "Boolean"
+								}
+							},
+							{
+								"source": {
+									"path": "$['Last_Modified_Date']"
+								},
+								"sink": {
+									"name": "Last_Modified_Date",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"path": "$['CurrencyRateID']"
+								},
+								"sink": {
+									"name": "CurrencyRateID",
+									"type": "Int32"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "SalesDetail_1000",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "SalesHeader_Staging",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "Copy_SalesDetail",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "Copy_SalesHeader",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "JsonSource",
+						"storeSettings": {
+							"type": "AzureBlobStorageReadSettings",
+							"recursive": true
+						},
+						"formatSettings": {
+							"type": "JsonReadSettings"
+						}
+					},
+					"sink": {
+						"type": "AzureSqlSink"
+					},
+					"enableStaging": false
+				},
+				"inputs": [
+					{
+						"referenceName": "SalesDetail_1000",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "SalesDetail_Staging",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"annotations": []
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

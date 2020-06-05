@@ -1,0 +1,48 @@
+{
+	"name": "ProductModel",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_AdventureWorksSQLServer",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "OLTP"
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"schema": [
+			{
+				"name": "ProductModelID",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Name",
+				"type": "nvarchar"
+			},
+			{
+				"name": "CatalogDescription",
+				"type": "xml"
+			},
+			{
+				"name": "Instructions",
+				"type": "xml"
+			},
+			{
+				"name": "rowguid",
+				"type": "uniqueidentifier"
+			},
+			{
+				"name": "ModifiedDate",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			}
+		],
+		"typeProperties": {
+			"schema": "Production",
+			"table": "ProductModel"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

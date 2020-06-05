@@ -1,0 +1,18 @@
+{
+	"name": "ls_AdventureWorksSQLServer",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"description": "On premise AdventureWorks",
+		"annotations": [],
+		"type": "SqlServer",
+		"typeProperties": {
+			"connectionString": "integrated security=True;data source=DESKTOP-48RLSAH\\SQLEXPRESS01;initial catalog=AdventureWorks2016CTP3",
+			"userName": "DESKTOP-48RLSAH\\Saj",
+			"encryptedCredential": "eyJDcmVkZW50aWFsSWQiOiI2NTFlZDZiYS03MWY3LTQwMGMtYTc4OC01NzdhZjgwOWRjODUiLCJWZXJzaW9uIjoiMi4wIiwiQ2xhc3NUeXBlIjoiTWljcm9zb2Z0LkRhdGFQcm94eS5Db3JlLkludGVyU2VydmljZURhdGFDb250cmFjdC5DcmVkZW50aWFsU1UwNkNZMTQifQ=="
+		},
+		"connectVia": {
+			"referenceName": "ir-adventureworkssqlserver",
+			"type": "IntegrationRuntimeReference"
+		}
+	}
+}
