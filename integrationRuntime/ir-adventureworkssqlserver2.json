@@ -1,0 +1,6 @@
+{
+	"name": "ir-adventureworkssqlserver2",
+	"properties": {
+		"type": "SelfHosted"
+	}
+}
