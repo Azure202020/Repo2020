@@ -195,7 +195,7 @@
 				],
 				"outputs": [
 					{
-						"referenceName": "Address_all",
+						"referenceName": "Address_json",
 						"type": "DatasetReference"
 					}
 				]
