@@ -6,7 +6,14 @@
 			{
 				"name": "Copy Customer",
 				"type": "Copy",
-				"dependsOn": [],
+				"dependsOn": [
+					{
+						"activity": "Copy_OLTP_Currency",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
 				"policy": {
 					"timeout": "7.00:00:00",
 					"retry": 0,
@@ -154,14 +161,7 @@
 			{
 				"name": "Copy Address",
 				"type": "Copy",
-				"dependsOn": [
-					{
-						"activity": "Copy ProductModel",
-						"dependencyConditions": [
-							"Succeeded"
-						]
-					}
-				],
+				"dependsOn": [],
 				"policy": {
 					"timeout": "7.00:00:00",
 					"retry": 0,
@@ -173,6 +173,7 @@
 				"typeProperties": {
 					"source": {
 						"type": "AzureSqlSource",
+						"sqlReaderQuery": "SELECT  [AddressID]\n      ,[AddressLine1]\n      ,[AddressLine2]\n      ,[City]\n      ,[StateProvinceID]\n      ,[PostalCode]\n      ,NULL as [SpatialLocation]\n      ,[rowguid]\n      ,[ModifiedDate]\n  FROM [Person].[Address]",
 						"queryTimeout": "02:00:00"
 					},
 					"sink": {
@@ -195,7 +196,7 @@
 				],
 				"outputs": [
 					{
-						"referenceName": "address_All",
+						"referenceName": "Address_All2",
 						"type": "DatasetReference"
 					}
 				]
