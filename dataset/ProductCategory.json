@@ -1,5 +1,5 @@
 {
-	"name": "Address",
+	"name": "ProductCategory",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "ls_AdventureWorks_Azure",
@@ -12,34 +12,13 @@
 		"type": "AzureSqlTable",
 		"schema": [
 			{
-				"name": "AddressID",
+				"name": "ProductCategoryID",
 				"type": "int",
 				"precision": 10
 			},
 			{
-				"name": "AddressLine1",
+				"name": "Name",
 				"type": "nvarchar"
-			},
-			{
-				"name": "AddressLine2",
-				"type": "nvarchar"
-			},
-			{
-				"name": "City",
-				"type": "nvarchar"
-			},
-			{
-				"name": "StateProvinceID",
-				"type": "int",
-				"precision": 10
-			},
-			{
-				"name": "PostalCode",
-				"type": "nvarchar"
-			},
-			{
-				"name": "SpatialLocation",
-				"type": "AdventureWorks2016CTP3.sys.geography"
 			},
 			{
 				"name": "rowguid",
@@ -53,8 +32,8 @@
 			}
 		],
 		"typeProperties": {
-			"schema": "Person",
-			"table": "Address"
+			"schema": "Production",
+			"table": "ProductCategory"
 		}
 	}
 }
