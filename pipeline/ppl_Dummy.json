@@ -1,0 +1,58 @@
+{
+	"name": "ppl_Dummy",
+	"properties": {
+		"activities": [
+			{
+				"name": "Copy Customer",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"queryTimeout": "02:00:00"
+					},
+					"sink": {
+						"type": "JsonSink",
+						"storeSettings": {
+							"type": "AzureBlobStorageWriteSettings"
+						},
+						"formatSettings": {
+							"type": "JsonWriteSettings",
+							"quoteAllText": true
+						}
+					},
+					"enableStaging": false
+				},
+				"inputs": [
+					{
+						"referenceName": "Customer",
+						"type": "DatasetReference",
+						"parameters": {
+							"serverName": "databaseserver-01.database.windows.net",
+							"dbName": "AdventureWorks2016CTP3",
+							"userName": "ssazureproject1",
+							"password": "drai429M",
+							"tableName": "Customer",
+							"schemaName": "Sales"
+						}
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "Customer_All",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"annotations": []
+	}
+}
