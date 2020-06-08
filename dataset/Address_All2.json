@@ -1,0 +1,43 @@
+{
+	"name": "Address_All2",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "BLOB_Storage",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Json",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"container": "datalake"
+			}
+		},
+		"schema": {
+			"type": "object",
+			"properties": {
+				"ProductCategoryID": {
+					"type": "integer"
+				},
+				"Name": {
+					"type": "string"
+				},
+				"rowguid": {
+					"type": "string"
+				},
+				"ModifiedDate": {
+					"type": "string"
+				},
+				"ProductModelID": {
+					"type": "integer"
+				},
+				"CatalogDescription": {
+					"type": "null"
+				},
+				"Instructions": {
+					"type": "null"
+				}
+			}
+		}
+	}
+}
