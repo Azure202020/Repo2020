@@ -522,89 +522,9 @@
 				]
 			},
 			{
-				"name": "Copy_ProductModel",
-				"type": "Copy",
-				"dependsOn": [],
-				"policy": {
-					"timeout": "7.00:00:00",
-					"retry": 0,
-					"retryIntervalInSeconds": 30,
-					"secureOutput": false,
-					"secureInput": false
-				},
-				"userProperties": [],
-				"typeProperties": {
-					"source": {
-						"type": "JsonSource",
-						"storeSettings": {
-							"type": "AzureBlobStorageReadSettings",
-							"recursive": true
-						},
-						"formatSettings": {
-							"type": "JsonReadSettings"
-						}
-					},
-					"sink": {
-						"type": "AzureSqlSink"
-					},
-					"enableStaging": false,
-					"translator": {
-						"type": "TabularTranslator",
-						"mappings": [
-							{
-								"source": {
-									"path": "$['ProductModelID']"
-								},
-								"sink": {
-									"name": "ProductModelID",
-									"type": "Int32"
-								}
-							},
-							{
-								"source": {
-									"path": "$['Name']"
-								},
-								"sink": {
-									"name": "Name",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"path": "$['ModifiedDate']"
-								},
-								"sink": {
-									"name": "ModifiedDate",
-									"type": "DateTime"
-								}
-							}
-						]
-					}
-				},
-				"inputs": [
-					{
-						"referenceName": "ProductModel_json",
-						"type": "DatasetReference"
-					}
-				],
-				"outputs": [
-					{
-						"referenceName": "ProductModel_Staging",
-						"type": "DatasetReference"
-					}
-				]
-			},
-			{
 				"name": "Copy_Currency",
 				"type": "Copy",
-				"dependsOn": [
-					{
-						"activity": "Copy_ProductModel",
-						"dependencyConditions": [
-							"Succeeded"
-						]
-					}
-				],
+				"dependsOn": [],
 				"policy": {
 					"timeout": "7.00:00:00",
 					"retry": 0,
