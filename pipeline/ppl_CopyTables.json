@@ -74,7 +74,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"source": {
-						"type": "SqlServerSource",
+						"type": "AzureSqlSource",
 						"queryTimeout": "02:00:00"
 					},
 					"sink": {
@@ -91,7 +91,7 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "ProdCategory",
+						"referenceName": "ProductCategory",
 						"type": "DatasetReference"
 					}
 				],
@@ -123,7 +123,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"source": {
-						"type": "SqlServerSource",
+						"type": "AzureSqlSource",
 						"queryTimeout": "02:00:00"
 					},
 					"sink": {
@@ -152,7 +152,7 @@
 				]
 			},
 			{
-				"name": "Copy ProductCategory",
+				"name": "Copy Address",
 				"type": "Copy",
 				"dependsOn": [
 					{
@@ -172,7 +172,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"source": {
-						"type": "SqlServerSource",
+						"type": "AzureSqlSource",
 						"queryTimeout": "02:00:00"
 					},
 					"sink": {
@@ -189,57 +189,7 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "ProductCategory",
-						"type": "DatasetReference"
-					}
-				],
-				"outputs": [
-					{
-						"referenceName": "ProductCategory_Json",
-						"type": "DatasetReference"
-					}
-				]
-			},
-			{
-				"name": "Copy Address",
-				"type": "Copy",
-				"dependsOn": [
-					{
-						"activity": "Copy ProductCategory",
-						"dependencyConditions": [
-							"Succeeded"
-						]
-					}
-				],
-				"policy": {
-					"timeout": "7.00:00:00",
-					"retry": 0,
-					"retryIntervalInSeconds": 30,
-					"secureOutput": false,
-					"secureInput": false
-				},
-				"userProperties": [],
-				"typeProperties": {
-					"source": {
-						"type": "SqlServerSource",
-						"sqlReaderQuery": "SELECT  [AddressID]\n      ,[AddressLine1]\n      ,[AddressLine2]\n      ,[City]\n      ,[StateProvinceID]\n      ,[PostalCode]\n  \n\n      ,[ModifiedDate]\n  FROM [Person].[Address]",
-						"queryTimeout": "02:00:00"
-					},
-					"sink": {
-						"type": "JsonSink",
-						"storeSettings": {
-							"type": "AzureBlobStorageWriteSettings"
-						},
-						"formatSettings": {
-							"type": "JsonWriteSettings",
-							"quoteAllText": true
-						}
-					},
-					"enableStaging": false
-				},
-				"inputs": [
-					{
-						"referenceName": "Address_sql",
+						"referenceName": "Address",
 						"type": "DatasetReference"
 					}
 				],

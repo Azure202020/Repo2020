@@ -2,14 +2,14 @@
 	"name": "ProductCategory",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "ls_AdventureWorksSQLServer",
+			"referenceName": "ls_AdventureWorks_Azure",
 			"type": "LinkedServiceReference"
 		},
 		"folder": {
 			"name": "OLTP"
 		},
 		"annotations": [],
-		"type": "SqlServerTable",
+		"type": "AzureSqlTable",
 		"schema": [
 			{
 				"name": "ProductCategoryID",
@@ -35,6 +35,5 @@
 			"schema": "Production",
 			"table": "ProductCategory"
 		}
-	},
-	"type": "Microsoft.DataFactory/factories/datasets"
+	}
 }
