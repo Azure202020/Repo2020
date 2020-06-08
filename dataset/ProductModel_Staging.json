@@ -39,24 +39,14 @@
 				"scale": 3
 			},
 			{
+				"name": "Read_Flag_",
+				"type": "nchar"
+			},
+			{
 				"name": "Last_Modified_Date",
 				"type": "datetime",
 				"precision": 23,
 				"scale": 3
-			},
-			{
-				"name": "Read_Flag",
-				"type": "bit"
-			},
-			{
-				"name": "InsterDate",
-				"type": "datetime",
-				"precision": 23,
-				"scale": 3
-			},
-			{
-				"name": "DWHash",
-				"type": "varchar"
 			}
 		],
 		"typeProperties": {
