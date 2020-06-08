@@ -5,7 +5,14 @@
 			{
 				"name": "Copy_Customer_Staging",
 				"type": "Copy",
-				"dependsOn": [],
+				"dependsOn": [
+					{
+						"activity": "Copy_SalesDetail",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
 				"policy": {
 					"timeout": "7.00:00:00",
 					"retry": 0,
@@ -517,14 +524,7 @@
 			{
 				"name": "Copy_ProductModel",
 				"type": "Copy",
-				"dependsOn": [
-					{
-						"activity": "Copy_ProductCategory",
-						"dependencyConditions": [
-							"Succeeded"
-						]
-					}
-				],
+				"dependsOn": [],
 				"policy": {
 					"timeout": "7.00:00:00",
 					"retry": 0,
@@ -567,15 +567,6 @@
 								"sink": {
 									"name": "Name",
 									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"path": "$['rowguid']"
-								},
-								"sink": {
-									"name": "rowguid",
-									"type": "Guid"
 								}
 							},
 							{
