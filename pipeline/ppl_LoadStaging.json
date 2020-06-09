@@ -867,7 +867,7 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "SalesDetail_1000",
+						"referenceName": "SalesOrderHeader_100",
 						"type": "DatasetReference"
 					}
 				],
