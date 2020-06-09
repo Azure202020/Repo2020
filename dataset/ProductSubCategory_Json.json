@@ -1,0 +1,100 @@
+{
+	"name": "ProductSubCategory_Json",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "BLOB_Storage",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "BLOB"
+		},
+		"annotations": [],
+		"type": "Json",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"container": "datalake"
+			}
+		},
+		"schema": {
+			"type": "object",
+			"properties": {
+				"ProductID": {
+					"type": "integer"
+				},
+				"Name": {
+					"type": "string"
+				},
+				"ProductNumber": {
+					"type": "string"
+				},
+				"MakeFlag": {
+					"type": "boolean"
+				},
+				"FinishedGoodsFlag": {
+					"type": "boolean"
+				},
+				"Color": {
+					"type": "string"
+				},
+				"SafetyStockLevel": {
+					"type": "integer"
+				},
+				"ReorderPoint": {
+					"type": "integer"
+				},
+				"StandardCost": {
+					"type": "number"
+				},
+				"ListPrice": {
+					"type": "number"
+				},
+				"Size": {
+					"type": "null"
+				},
+				"SizeUnitMeasureCode": {
+					"type": "null"
+				},
+				"WeightUnitMeasureCode": {
+					"type": "null"
+				},
+				"Weight": {
+					"type": "null"
+				},
+				"DaysToManufacture": {
+					"type": "integer"
+				},
+				"ProductLine": {
+					"type": "null"
+				},
+				"Class": {
+					"type": "string"
+				},
+				"Style": {
+					"type": "null"
+				},
+				"ProductSubcategoryID": {
+					"type": "null"
+				},
+				"ProductModelID": {
+					"type": "null"
+				},
+				"SellStartDate": {
+					"type": "string"
+				},
+				"SellEndDate": {
+					"type": "null"
+				},
+				"DiscontinuedDate": {
+					"type": "null"
+				},
+				"rowguid": {
+					"type": "string"
+				},
+				"ModifiedDate": {
+					"type": "string"
+				}
+			}
+		}
+	}
+}

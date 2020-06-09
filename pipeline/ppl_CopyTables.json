@@ -300,13 +300,102 @@
 				]
 			},
 			{
-				"name": "Wait1",
-				"type": "Wait",
-				"dependsOn": [],
+				"name": "Copy ProductSubCategory",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "Copy ProductModel",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
 				"userProperties": [],
 				"typeProperties": {
-					"waitTimeInSeconds": 1
-				}
+					"source": {
+						"type": "AzureSqlSource",
+						"queryTimeout": "02:00:00"
+					},
+					"sink": {
+						"type": "JsonSink",
+						"storeSettings": {
+							"type": "AzureBlobStorageWriteSettings"
+						},
+						"formatSettings": {
+							"type": "JsonWriteSettings",
+							"quoteAllText": true
+						}
+					},
+					"enableStaging": false
+				},
+				"inputs": [
+					{
+						"referenceName": "ProductSubcategory_oltp",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "ProductSubCategory_Json",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "Copy ProductDescription",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "Copy ProductSubCategory",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"queryTimeout": "02:00:00"
+					},
+					"sink": {
+						"type": "JsonSink",
+						"storeSettings": {
+							"type": "AzureBlobStorageWriteSettings"
+						},
+						"formatSettings": {
+							"type": "JsonWriteSettings",
+							"quoteAllText": true
+						}
+					},
+					"enableStaging": false
+				},
+				"inputs": [
+					{
+						"referenceName": "ProductDescription_oltp",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "ProductDescription_json",
+						"type": "DatasetReference"
+					}
+				]
 			}
 		],
 		"annotations": []
