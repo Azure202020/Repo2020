@@ -1,5 +1,5 @@
 {
-	"name": " ProductModelDescription",
+	"name": "ProductModelDescription",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "BLOB_Storage",
