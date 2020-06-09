@@ -13,7 +13,7 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobStorageLocation",
-				"fileName": "SalesOrderHeader_1000",
+				"fileName": "SalesDetail_1000",
 				"container": "datalake"
 			}
 		},
