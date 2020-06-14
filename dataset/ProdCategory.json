@@ -1,23 +1,28 @@
 {
-	"name": "Currency_Staging",
+	"name": "ProdCategory",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "ls_AdventureWorks_Staging",
+			"referenceName": "ls_AdventureWorks_Azure",
 			"type": "LinkedServiceReference"
 		},
 		"folder": {
-			"name": "STAGING"
+			"name": "OLTP"
 		},
 		"annotations": [],
 		"type": "AzureSqlTable",
 		"schema": [
 			{
-				"name": "CurrencyCode",
-				"type": "nchar"
+				"name": "ProductCategoryID",
+				"type": "int",
+				"precision": 10
 			},
 			{
 				"name": "Name",
-				"type": "nchar"
+				"type": "nvarchar"
+			},
+			{
+				"name": "rowguid",
+				"type": "uniqueidentifier"
 			},
 			{
 				"name": "ModifiedDate",
@@ -26,8 +31,8 @@
 				"scale": 3
 			},
 			{
-				"name": "Read_Flag_",
-				"type": "nchar"
+				"name": "Read_Flag",
+				"type": "bit"
 			},
 			{
 				"name": "Last_Modified_Date",
@@ -37,8 +42,8 @@
 			}
 		],
 		"typeProperties": {
-			"schema": "dbo",
-			"table": "Currency"
+			"schema": "Production",
+			"table": "ProductCategory"
 		}
 	},
 	"type": "Microsoft.DataFactory/factories/datasets"

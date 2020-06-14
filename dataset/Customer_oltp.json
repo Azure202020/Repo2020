@@ -1,5 +1,5 @@
 {
-	"name": "ProductSubcategory_oltp",
+	"name": "Customer_oltp",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "ls_AdventureWorks_Azure",
@@ -12,18 +12,28 @@
 		"type": "AzureSqlTable",
 		"schema": [
 			{
-				"name": "ProductSubcategoryID",
+				"name": "CustomerID",
 				"type": "int",
 				"precision": 10
 			},
 			{
-				"name": "ProductCategoryID",
+				"name": "PersonID",
 				"type": "int",
 				"precision": 10
 			},
 			{
-				"name": "Name",
-				"type": "nvarchar"
+				"name": "StoreID",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "TerritoryID",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "AccountNumber",
+				"type": "varchar"
 			},
 			{
 				"name": "rowguid",
@@ -37,8 +47,8 @@
 			}
 		],
 		"typeProperties": {
-			"schema": "Production",
-			"table": "ProductSubcategory"
+			"schema": "Sales",
+			"table": "Customer"
 		}
 	},
 	"type": "Microsoft.DataFactory/factories/datasets"

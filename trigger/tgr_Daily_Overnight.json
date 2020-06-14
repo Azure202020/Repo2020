@@ -1,0 +1,30 @@
+{
+	"name": "tgr_Daily_Overnight",
+	"properties": {
+		"annotations": [],
+		"runtimeState": "Stopped",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "ppl_LoadStaging",
+					"type": "PipelineReference"
+				}
+			},
+			{
+				"pipelineReference": {
+					"referenceName": "ppl_IncrementalLoad",
+					"type": "PipelineReference"
+				}
+			}
+		],
+		"type": "ScheduleTrigger",
+		"typeProperties": {
+			"recurrence": {
+				"frequency": "Hour",
+				"interval": 3,
+				"startTime": "2020-06-11T22:00:00Z",
+				"timeZone": "UTC"
+			}
+		}
+	}
+}

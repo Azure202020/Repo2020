@@ -13,80 +13,21 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobStorageLocation",
+				"fileName": "Production.ProductSubcategory.json",
 				"container": "datalake"
 			}
 		},
 		"schema": {
 			"type": "object",
 			"properties": {
-				"ProductID": {
+				"ProductSubcategoryID": {
+					"type": "integer"
+				},
+				"ProductCategoryID": {
 					"type": "integer"
 				},
 				"Name": {
 					"type": "string"
-				},
-				"ProductNumber": {
-					"type": "string"
-				},
-				"MakeFlag": {
-					"type": "boolean"
-				},
-				"FinishedGoodsFlag": {
-					"type": "boolean"
-				},
-				"Color": {
-					"type": "string"
-				},
-				"SafetyStockLevel": {
-					"type": "integer"
-				},
-				"ReorderPoint": {
-					"type": "integer"
-				},
-				"StandardCost": {
-					"type": "number"
-				},
-				"ListPrice": {
-					"type": "number"
-				},
-				"Size": {
-					"type": "null"
-				},
-				"SizeUnitMeasureCode": {
-					"type": "null"
-				},
-				"WeightUnitMeasureCode": {
-					"type": "null"
-				},
-				"Weight": {
-					"type": "null"
-				},
-				"DaysToManufacture": {
-					"type": "integer"
-				},
-				"ProductLine": {
-					"type": "null"
-				},
-				"Class": {
-					"type": "string"
-				},
-				"Style": {
-					"type": "null"
-				},
-				"ProductSubcategoryID": {
-					"type": "null"
-				},
-				"ProductModelID": {
-					"type": "null"
-				},
-				"SellStartDate": {
-					"type": "string"
-				},
-				"SellEndDate": {
-					"type": "null"
-				},
-				"DiscontinuedDate": {
-					"type": "null"
 				},
 				"rowguid": {
 					"type": "string"
@@ -96,5 +37,6 @@
 				}
 			}
 		}
-	}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
 }

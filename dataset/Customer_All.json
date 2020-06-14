@@ -6,7 +6,7 @@
 			"type": "LinkedServiceReference"
 		},
 		"folder": {
-			"name": "BLOB"
+			"name": "OLTP"
 		},
 		"annotations": [],
 		"type": "Json",
@@ -20,17 +20,11 @@
 		"schema": {
 			"type": "object",
 			"properties": {
-				"added": {
-					"type": "array",
-					"items": {
-						"type": "string"
-					}
-				},
-				"removed": {
-					"type": "array"
-				},
 				"CustomerID": {
 					"type": "integer"
+				},
+				"PersonID": {
+					"type": "null"
 				},
 				"StoreID": {
 					"type": "integer"
@@ -45,12 +39,6 @@
 					"type": "string"
 				},
 				"ModifiedDate": {
-					"type": "string"
-				},
-				"Read_Flag": {
-					"type": "string"
-				},
-				"Last_Modified_Date": {
 					"type": "string"
 				}
 			}

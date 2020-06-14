@@ -13,35 +13,27 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobStorageLocation",
+				"fileName": "Sales.Currency.json",
 				"container": "datalake"
 			}
 		},
 		"schema": {
 			"type": "object",
 			"properties": {
-				"CustomerID": {
-					"type": "integer"
-				},
-				"StoreID": {
-					"type": "integer"
-				},
-				"TerritoryID": {
-					"type": "integer"
-				},
-				"AccountNumber": {
+				"CurrencyCode": {
 					"type": "string"
 				},
-				"rowguid": {
+				"Name": {
 					"type": "string"
 				},
 				"ModifiedDate": {
 					"type": "string"
 				},
 				"Read_Flag": {
-					"type": "string"
+					"type": "null"
 				},
 				"Last_Modified_Date": {
-					"type": "string"
+					"type": "null"
 				}
 			}
 		}

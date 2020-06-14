@@ -6,7 +6,7 @@
 			"type": "LinkedServiceReference"
 		},
 		"folder": {
-			"name": "Staging"
+			"name": "STAGING"
 		},
 		"annotations": [],
 		"type": "AzureSqlTable",
@@ -26,11 +26,11 @@
 			},
 			{
 				"name": "MakeFlag",
-				"type": "nvarchar"
+				"type": "bit"
 			},
 			{
 				"name": "FinishedGoodsFlag",
-				"type": "nvarchar"
+				"type": "bit"
 			},
 			{
 				"name": "Color",
@@ -132,24 +132,14 @@
 				"scale": 3
 			},
 			{
-				"name": "Read_Flag",
-				"type": "bit"
-			},
-			{
 				"name": "Last_Modified_Date",
 				"type": "datetime",
 				"precision": 23,
 				"scale": 3
 			},
 			{
-				"name": "InsterDate",
-				"type": "datetime",
-				"precision": 23,
-				"scale": 3
-			},
-			{
-				"name": "DWHash",
-				"type": "varchar"
+				"name": "Read_Flag",
+				"type": "nchar"
 			}
 		],
 		"typeProperties": {

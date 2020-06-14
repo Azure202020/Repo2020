@@ -1,5 +1,5 @@
 {
-	"name": "ProductDescription_json",
+	"name": "Address_All",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "BLOB_Storage",
@@ -13,25 +13,8 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobStorageLocation",
-				"fileName": "Production.ProductDescription.json",
+				"fileName": "Address_json.json",
 				"container": "datalake"
-			}
-		},
-		"schema": {
-			"type": "object",
-			"properties": {
-				"ProductDescriptionID": {
-					"type": "integer"
-				},
-				"Description": {
-					"type": "string"
-				},
-				"rowguid": {
-					"type": "string"
-				},
-				"ModifiedDate": {
-					"type": "string"
-				}
 			}
 		}
 	},

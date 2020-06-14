@@ -1,47 +1,32 @@
 {
-	"name": "Address_All2",
+	"name": "ProductModelDescription_json",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "BLOB_Storage",
 			"type": "LinkedServiceReference"
 		},
 		"folder": {
-			"name": "OLTP"
+			"name": "BLOB"
 		},
 		"annotations": [],
 		"type": "Json",
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobStorageLocation",
-				"fileName": "Address_json.json",
+				"fileName": "Production.ProductModelProductDescriptionCulture.json",
 				"container": "datalake"
 			}
 		},
 		"schema": {
 			"type": "object",
 			"properties": {
-				"AddressID": {
+				"ProductModelID": {
 					"type": "integer"
 				},
-				"AddressLine1": {
-					"type": "string"
-				},
-				"AddressLine2": {
-					"type": "null"
-				},
-				"City": {
-					"type": "string"
-				},
-				"StateProvinceID": {
+				"ProductDescriptionID": {
 					"type": "integer"
 				},
-				"PostalCode": {
-					"type": "string"
-				},
-				"SpatialLocation": {
-					"type": "null"
-				},
-				"rowguid": {
+				"CultureID": {
 					"type": "string"
 				},
 				"ModifiedDate": {

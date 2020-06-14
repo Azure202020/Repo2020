@@ -5,6 +5,9 @@
 			"referenceName": "ls_AdventureWorks_Azure",
 			"type": "LinkedServiceReference"
 		},
+		"folder": {
+			"name": "OLTP"
+		},
 		"annotations": [],
 		"type": "AzureSqlTable",
 		"schema": [
@@ -32,5 +35,6 @@
 			"schema": "Production",
 			"table": "ProductDescription"
 		}
-	}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
 }

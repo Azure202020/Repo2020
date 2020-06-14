@@ -37,11 +37,22 @@
 				"type": "datetime",
 				"precision": 23,
 				"scale": 3
+			},
+			{
+				"name": "Read_Flag",
+				"type": "bit"
+			},
+			{
+				"name": "Last_Modified_Date",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
 			}
 		],
 		"typeProperties": {
 			"schema": "Production",
 			"table": "ProductModel"
 		}
-	}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
 }

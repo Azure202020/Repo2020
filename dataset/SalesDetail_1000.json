@@ -20,26 +20,32 @@
 		"schema": {
 			"type": "object",
 			"properties": {
-				"added": {
-					"type": "array",
-					"items": {
-						"type": "string"
-					}
-				},
-				"removed": {
-					"type": "array"
-				},
-				"CustomerID": {
+				"SalesOrderID": {
 					"type": "integer"
 				},
-				"StoreID": {
+				"SalesOrderDetailID": {
 					"type": "integer"
 				},
-				"TerritoryID": {
-					"type": "integer"
-				},
-				"AccountNumber": {
+				"CarrierTrackingNumber": {
 					"type": "string"
+				},
+				"OrderQty": {
+					"type": "integer"
+				},
+				"ProductID": {
+					"type": "integer"
+				},
+				"SpecialOfferID": {
+					"type": "integer"
+				},
+				"UnitPrice": {
+					"type": "number"
+				},
+				"UnitPriceDiscount": {
+					"type": "number"
+				},
+				"LineTotal": {
+					"type": "number"
 				},
 				"rowguid": {
 					"type": "string"
@@ -47,10 +53,10 @@
 				"ModifiedDate": {
 					"type": "string"
 				},
-				"Read_Flag": {
+				"Last_Modified_Date": {
 					"type": "string"
 				},
-				"Last_Modified_Date": {
+				"Read_Flag": {
 					"type": "string"
 				}
 			}

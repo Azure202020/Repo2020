@@ -31,6 +31,12 @@
 				},
 				"ModifiedDate": {
 					"type": "string"
+				},
+				"Read_Flag": {
+					"type": "null"
+				},
+				"Last_Modified_Date": {
+					"type": "null"
 				}
 			}
 		}
